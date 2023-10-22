@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 from api.models import Logs
 from api.serializer import LogSerializer
-from .email_work import send_email, send_email_django
+from .email_work import send_email_django
 
 
 #class Crud(generics.ListCreateAPIView):
@@ -21,6 +21,7 @@ class MessageSenderAPI(APIView):
         subject = self.request.GET.get('subject')
         recipient_list = self.request.GET.get('recipient_list')
 
+        body = self.request.GET.get('message')
         txt_ = self.request.GET.get('text')
         html_ = self.request.GET.get('html')
 
@@ -32,5 +33,7 @@ class MessageSenderAPI(APIView):
         else:
 
             send_email_django(subject=subject,
-                              user_list=recipient_list)
+                              user_list=recipient_list,
+                              message=body)
             return Response({'msg': 'Okay!'}, status=200)
+

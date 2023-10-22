@@ -11,3 +11,12 @@ class Logs(models.Model):
 
     def __str__(self):
         return self.id
+
+
+class User(models.Model):
+    uuid = models.UUIDField()
+    email = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.email

@@ -10,32 +10,13 @@ from celery import shared_task
 from typing import Union
 
 
-def send_email(user_list):
-    # second way
-    port = 465  # For SSL
-    smtp_server = "smtp.mail.ru"
-    sender_email = "arsa2003@mail.ru"  # Enter your address
-    receiver_email = ';'.join(user_list)  # Enter receiver address
-    password = "U3ep7HkJ4ma2UgLqjf1r"
-    message = """\
-    Subject: Hi, we fixed portal, you can come visit!
-    
-    This message is sent from Python."""
-
-    context = ssl.create_default_context()
-    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-        server.login(sender_email, password)
-        server.sendmail(sender_email, receiver_email, message)
-
-
-# send_email()
-
 # @shared_task(bind=True)
 def send_email_django(subject: str,
-                      user_list: str):
+                      user_list: str,
+                      message: str):
     #    for user in user_list:
     mail_subject = "Moscow tender portal"
-    message = "Portal was fixed"
+    message_test = "Portal was fixed"
     send_mail(
         subject=subject,
         message=message,
