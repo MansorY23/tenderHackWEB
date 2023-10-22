@@ -1,6 +1,6 @@
 from datetime import datetime
 from rest_framework import serializers
-from models import Logs
+from api.models import Logs
 
 
 class LogSerializer(serializers.ModelSerializer):

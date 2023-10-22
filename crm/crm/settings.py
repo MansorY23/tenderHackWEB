@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api.apps.ApiConfig',
+    'api',
     'rest_framework'
 ]
 
@@ -45,17 +45,20 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Moscow'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # add your host of the email here in this case its Gmail so we are going to use Gmail host
 EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_USE_TLS = True
+# add your mail here
+EMAIL_HOST_USER = 'arsa2003@mail.ru'
+EMAIL_USE_TLS = False
+EMAIL_TIMEOUT = 10 # in seconds
+EMAIL_USE_SSL = True
 # add the port number of the email server
 EMAIL_PORT = 465
-# add your gamil here
-EMAIL_HOST_USER = 'arsa2003@mail.ru'
+
 # add your password here
-EMAIL_HOST_PASSWORD = '<U3ep7HkJ4ma2UgLqjf1r>'
-DEFAULT_FROM_EMAIL = 'Celery <arsa2003@mail.ru>'
+EMAIL_HOST_PASSWORD = 'U3ep7HkJ4ma2UgLqjf1r'
+DEFAULT_FROM_EMAIL = 'arsa2003@mail.ru'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
